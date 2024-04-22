@@ -10,7 +10,7 @@ Could be used for servers that want to:
 - Encourage more PvP in expensive gear.
 - Get players to spend more time griding on the server to be at the top of the leaderboard.
 
-Requires [PlaceholderAPI]([https://dev.bukkit.org/projects/worldguard](https://www.spigotmc.org/resources/placeholderapi.6245/) for the placeholder functionality.
+Requires [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) for the placeholder functionality.
 
 ![image](https://github.com/VanillaPlusNet/LeaderboardPlugin/assets/45533337/5709df20-4818-4990-90cc-e793150b6bf1)
 
