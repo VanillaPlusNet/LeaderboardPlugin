@@ -26,13 +26,11 @@ public class LeaderboardUtils {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
                 if (offlinePlayer.hasPlayedBefore()) {
                     temp.add(new LeaderboardPlayer(offlinePlayer.getName(), kills));
-                    getPlugin().getLogger().info("Added to leaderboard: " + offlinePlayer.getName() + " with " + kills + " kills.");
                 }
             });
 
             temp.sort((p1, p2) -> Integer.compare(p2.getKills(), p1.getKills()));
             leaderboard = temp;
-            getPlugin().getLogger().info("Leaderboard sorted.");
         });
     }
 
