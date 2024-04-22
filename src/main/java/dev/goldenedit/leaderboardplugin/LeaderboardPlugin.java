@@ -3,13 +3,22 @@ package dev.goldenedit.leaderboardplugin;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import dev.goldenedit.leaderboardplugin.commands.CalcPoints;
+import dev.goldenedit.leaderboardplugin.commands.KillBoardCommand;
+import dev.goldenedit.leaderboardplugin.commands.KillCountCommand;
+import dev.goldenedit.leaderboardplugin.listeners.DeathListener;
+import dev.goldenedit.leaderboardplugin.utils.LeaderboardUtils;
+import dev.goldenedit.leaderboardplugin.utils.SchedulerUtils;
 import org.apache.commons.io.FileUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -73,11 +82,11 @@ public final class LeaderboardPlugin extends JavaPlugin {
             fileWriter = new FileWriter("plugins/LeaderboardPlugin/data.json");
             fileWriter.write(jsonObject.toString());
             fileWriter.close();
-            plugin.getLogger().info("Saved leaderboard data to file");
+            plugin.getLogger().info("Saved leaderboard data to file.");
         } catch (Exception e) {
             e.printStackTrace();
             plugin.getLogger().info(e.toString());
-            plugin.getLogger().info("Failed to save leaderboard data to file");
+            plugin.getLogger().info("Failed to save leaderboard data to file.");
         }
     }
 
