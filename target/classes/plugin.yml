@@ -1,0 +1,4 @@
+name: LeaderboardPlugin
+version: '1.0'
+main: dev.goldenedit.leaderboardplugin.LeaderboardPlugin
+api-version: '1.20'

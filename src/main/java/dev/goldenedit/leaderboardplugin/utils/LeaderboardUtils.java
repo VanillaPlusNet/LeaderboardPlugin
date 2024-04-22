@@ -15,13 +15,17 @@ public class LeaderboardUtils {
     public static void sortLeaderboard() {
         SchedulerUtils.runAsync(() -> {
             ArrayList<LeaderboardPlayer> temp = new ArrayList<>();
-            for (int i = 0; i < 1000; i++)
-                temp.add(new LeaderboardPlayer("Player", 0));
-            LeaderboardPlugin.killCount.forEach(());
-            temp.sort(());
+            LeaderboardPlugin.killCount.forEach((uuid, kills) -> {
+                Player player = Bukkit.getPlayer(uuid);
+                if (player != null) {
+                    temp.add(new LeaderboardPlayer(player.getName(), kills));
+                }
+            });
+            temp.sort((p1, p2) -> Integer.compare(p2.getKills(), p1.getKills()));
             leaderboard = temp;
         });
     }
+
 
     public static void showLeaderboard(CommandSender sender) {
         sender.sendMessage("Leaderboard:");
