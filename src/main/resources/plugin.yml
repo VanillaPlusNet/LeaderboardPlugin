@@ -1,0 +1,4 @@
+name: LeaderboardPlugin
+version: '${project.version}'
+main: dev.goldenedit.leaderboardplugin.LeaderboardPlugin
+api-version: '1.20'
