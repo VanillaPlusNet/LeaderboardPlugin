@@ -29,7 +29,7 @@ public class LeaderboardUtils {
                 }
             });
 
-            temp.sort((p1, p2) -> Integer.compare(p2.getKills(), p1.getKills()));
+            temp.sort((p1, p2) -> Integer.compare(p2.getPoints(), p1.getPoints()));
             leaderboard = temp;
         });
     }
@@ -39,7 +39,7 @@ public class LeaderboardUtils {
         int size = Math.min(leaderboard.size(), 1000); // Prevents out-of-bounds exception
         for (int i = 0; i < size; i++) {
             LeaderboardPlayer player = leaderboard.get(i);
-            sender.sendMessage((i + 1) + ". " + player.getName() + " - " + player.getKills());
+            sender.sendMessage((i + 1) + ". " + player.getName() + " - " + player.getPoints());
         }
         if (size == 0) {
             sender.sendMessage("No players on the leaderboard yet.");
@@ -54,20 +54,20 @@ public class LeaderboardUtils {
         return -1;
     }
 
-    public static Integer getKills(UUID uuid) {
+    public static Integer getPoints(UUID uuid) {
         if (LeaderboardPlugin.killCount.containsKey(uuid))
             return LeaderboardPlugin.killCount.get(uuid);
         return 0;
     }
 
-    public static Integer getKills(Player player) {
-        return getKills(player.getUniqueId());
+    public static Integer getPoints(Player player) {
+        return getPoints(player.getUniqueId());
     }
 
-    public static Integer getKills(String name) {
+    public static Integer getPoints(String name) {
         Player player = Bukkit.getPlayerExact(name);
         if (player != null) {
-            return getKills(player.getUniqueId());
+            return getPoints(player.getUniqueId());
         }
         return 0;
     }

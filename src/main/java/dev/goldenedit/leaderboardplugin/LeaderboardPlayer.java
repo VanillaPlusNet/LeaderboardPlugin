@@ -14,7 +14,7 @@ public class LeaderboardPlayer {
         return this.name;
     }
 
-    public int getKills() {
+    public int getPoints() {
         return this.kills;
     }
 

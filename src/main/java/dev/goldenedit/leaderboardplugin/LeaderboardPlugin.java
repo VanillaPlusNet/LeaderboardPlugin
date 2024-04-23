@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import dev.goldenedit.leaderboardplugin.commands.CalcPoints;
 import dev.goldenedit.leaderboardplugin.commands.KillBoardCommand;
-import dev.goldenedit.leaderboardplugin.commands.KillCountCommand;
+import dev.goldenedit.leaderboardplugin.commands.PointsCommand;
 import dev.goldenedit.leaderboardplugin.listeners.DeathListener;
 import dev.goldenedit.leaderboardplugin.utils.LeaderboardUtils;
 import dev.goldenedit.leaderboardplugin.utils.SchedulerUtils;
@@ -51,7 +51,7 @@ public final class LeaderboardPlugin extends JavaPlugin {
                 getPlugin().getLogger().info("Failed to load data from file");
             }
         Bukkit.getPluginManager().registerEvents((Listener)new DeathListener(), (Plugin)this);
-        getCommand("killcount").setExecutor((CommandExecutor)new KillCountCommand());
+        getCommand("points").setExecutor((CommandExecutor)new PointsCommand());
         getCommand("killboard").setExecutor((CommandExecutor)new KillBoardCommand());
         getCommand("calcpoints").setExecutor((CommandExecutor)new CalcPoints());
         SchedulerUtils.setPlugin((Plugin)this);
