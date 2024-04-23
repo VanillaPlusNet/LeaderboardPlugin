@@ -22,10 +22,10 @@ public class LeaderboardUtils {
                 temp.add(new LeaderboardPlayer("Player", 0));
             }
 
-            LeaderboardPlugin.killCount.forEach((uuid, kills) -> {
+            LeaderboardPlugin.killCount.forEach((uuid, points) -> {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
                 if (offlinePlayer.hasPlayedBefore()) {
-                    temp.add(new LeaderboardPlayer(offlinePlayer.getName(), kills));
+                    temp.add(new LeaderboardPlayer(offlinePlayer.getName(), points));
                 }
             });
 

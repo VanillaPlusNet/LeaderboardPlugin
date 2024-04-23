@@ -26,7 +26,7 @@ public final class LeaderboardPlugin extends JavaPlugin {
 
     public static Plugin plugin;
 
-    public static HashMap<UUID, ArrayList<PlayerKill>> playerKills = new HashMap<>();
+    public static HashMap<UUID, ArrayList<PlayerKill>> playerPoints = new HashMap<>();
 
     public static HashMap<UUID, Integer> killCount = new HashMap<>();
 
@@ -42,8 +42,8 @@ public final class LeaderboardPlugin extends JavaPlugin {
                 JsonObject jsonObject = (JsonObject)(new Gson()).fromJson(json, JsonObject.class);
                 jsonObject.entrySet().forEach(entry -> {
                     UUID uuid = UUID.fromString((String)entry.getKey());
-                    Integer kills = Integer.valueOf(((JsonElement)entry.getValue()).getAsInt());
-                    killCount.put(uuid, kills);
+                    Integer points = Integer.valueOf(((JsonElement)entry.getValue()).getAsInt());
+                    killCount.put(uuid, points);
                 });
                 getPlugin().getLogger().info("Loaded data from file");
             } catch (Exception e) {

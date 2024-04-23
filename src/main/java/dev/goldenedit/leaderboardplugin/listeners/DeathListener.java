@@ -25,20 +25,20 @@ public class DeathListener implements Listener {
             if (killer.getAddress().getAddress().equals(victim.getAddress().getAddress()))
                 return;
             points += calcPoints(victim);
-            if (LeaderboardPlugin.playerKills.containsKey(killer.getUniqueId())) {
-                for (PlayerKill playerKill : LeaderboardPlugin.playerKills.get(killer.getUniqueId())) {
+            if (LeaderboardPlugin.playerPoints.containsKey(killer.getUniqueId())) {
+                for (PlayerKill playerKill : LeaderboardPlugin.playerPoints.get(killer.getUniqueId())) {
                     if ((playerKill.getVictim().equals(victim.getUniqueId()) || playerKill.getVictimIP().equals(victim.getAddress().getAddress())) &&
                             playerKill.getTime().longValue() > System.currentTimeMillis())
                         return;
                 }
-                ArrayList<PlayerKill> playerKills = (ArrayList<PlayerKill>)LeaderboardPlugin.playerKills.get(killer.getUniqueId());
-                playerKills.add(new PlayerKill(killer.getUniqueId(), victim.getUniqueId(), Long.valueOf(System.currentTimeMillis() + (3600000 * 1000 / points)), victim.getAddress().getAddress()));
-                LeaderboardPlugin.playerKills.put(killer.getUniqueId(), playerKills);
+                ArrayList<PlayerKill> playerPoints = (ArrayList<PlayerKill>)LeaderboardPlugin.playerPoints.get(killer.getUniqueId());
+                playerPoints.add(new PlayerKill(killer.getUniqueId(), victim.getUniqueId(), Long.valueOf(System.currentTimeMillis() + (3600000 * 1000 / points)), victim.getAddress().getAddress()));
+                LeaderboardPlugin.playerPoints.put(killer.getUniqueId(), playerPoints);
                 increaseKillCount(killer, points);
             } else {
-                ArrayList<PlayerKill> playerKills = new ArrayList<>();
-                playerKills.add(new PlayerKill(killer.getUniqueId(), victim.getUniqueId(), Long.valueOf(System.currentTimeMillis() + (3600000 * 1000 / points)), victim.getAddress().getAddress()));
-                LeaderboardPlugin.playerKills.put(killer.getUniqueId(), playerKills);
+                ArrayList<PlayerKill> playerPoints = new ArrayList<>();
+                playerPoints.add(new PlayerKill(killer.getUniqueId(), victim.getUniqueId(), Long.valueOf(System.currentTimeMillis() + (3600000 * 1000 / points)), victim.getAddress().getAddress()));
+                LeaderboardPlugin.playerPoints.put(killer.getUniqueId(), playerPoints);
                 increaseKillCount(killer, points);
             }
             Component pointText = Component.text(points).color(TextColor.color(175354));

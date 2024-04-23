@@ -3,11 +3,11 @@ package dev.goldenedit.leaderboardplugin;
 public class LeaderboardPlayer {
     private String name;
 
-    private int kills;
+    private int points;
 
-    public LeaderboardPlayer(String name, int kills) {
+    public LeaderboardPlayer(String name, int points) {
         this.name = name;
-        this.kills = kills;
+        this.points = points;
     }
 
     public String getName() {
@@ -15,7 +15,7 @@ public class LeaderboardPlayer {
     }
 
     public int getPoints() {
-        return this.kills;
+        return this.points;
     }
 
     public boolean equals(String name) {
