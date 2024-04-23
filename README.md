@@ -18,7 +18,7 @@ Requires [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245
 
 ## Commands and Permissions
 
-`/killcount <player>` `leaderboardplugin.killcount` - See how many (real) kills a player has.
+`/points <player>` `leaderboardplugin.points` - See how many points a specific player has.
 
 `/killboard` `leaderboardplugin.killboard` - See the top 1000 players on the scoreboard.
 
