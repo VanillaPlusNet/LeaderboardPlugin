@@ -11,6 +11,7 @@ import dev.goldenedit.leaderboardplugin.utils.LeaderboardUtils;
 import dev.goldenedit.leaderboardplugin.utils.SchedulerUtils;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -18,6 +19,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -35,6 +40,7 @@ public final class LeaderboardPlugin extends JavaPlugin {
     private static File file = new File("plugins/LeaderboardPlugin/data.json");
 
     public void onEnable() {
+        saveDefaultConfig();
         plugin = (Plugin)this;
         if (file.exists())
             try {
@@ -70,25 +76,58 @@ public final class LeaderboardPlugin extends JavaPlugin {
     }
 
     private static void saveData() {
+        ArrayList<LeaderboardPlayer> leaderboardSorted = new ArrayList<>();
+        LeaderboardPlugin.killCount.forEach((uuid, points) -> {
+            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+            if (offlinePlayer.hasPlayedBefore()) {
+                leaderboardSorted.add(new LeaderboardPlayer(offlinePlayer.getName(), points));
+            }
+        });
+
+        leaderboardSorted.sort((p1, p2) -> Integer.compare(p2.getPoints(), p1.getPoints()));
+
         JsonObject jsonObject = new JsonObject();
-        for (UUID uuid : killCount.keySet())
-            jsonObject.addProperty(uuid.toString(), killCount.get(uuid));
+        for (LeaderboardPlayer player : LeaderboardUtils.leaderboard) {
+            jsonObject.addProperty(player.getName(), player.getPoints());
+        }
         try {
             if (!plugin.getDataFolder().exists())
                 plugin.getDataFolder().mkdirs();
             File file = new File(plugin.getDataFolder(), "data.json");
             if (!file.exists())
                 file.createNewFile();
-            fileWriter = new FileWriter("plugins/LeaderboardPlugin/data.json");
+            fileWriter = new FileWriter(file);
             fileWriter.write(jsonObject.toString());
             fileWriter.close();
             plugin.getLogger().info("Saved leaderboard data to file.");
+            postData(jsonObject.toString()); // Call the method to post data
         } catch (Exception e) {
             e.printStackTrace();
-            plugin.getLogger().info(e.toString());
             plugin.getLogger().info("Failed to save leaderboard data to file.");
         }
     }
+
+
+    private static void postData(String jsonData) {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(plugin.getConfig().getString("cloudflare.url")))
+                .header("Content-Type", "text/plain")
+                .header("Authorization", plugin.getConfig().getString("cloudflare.auth_token"))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonData))
+                .build();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenAccept(response -> {
+                    plugin.getLogger().info("Response status code: " + response.statusCode());
+                    plugin.getLogger().info("Response body: " + response.body());
+                })
+                .exceptionally(e -> {
+                    plugin.getLogger().info("Failed to send data: " + e.getMessage());
+                    return null;
+                });
+    }
+
 
     public static Plugin getPlugin() {
         return plugin;
