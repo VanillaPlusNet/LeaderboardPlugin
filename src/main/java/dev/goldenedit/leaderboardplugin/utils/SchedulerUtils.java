@@ -13,6 +13,10 @@ public class SchedulerUtils {
     public static void runRepeating(Runnable runnable, long l) {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, runnable, 0L, l);
     }
+    public static void runRepeatingAsync(Runnable runnable, long l) {
+        Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, runnable, 0L, l);
+    }
+
 
     public static void runSync(Runnable runnable) {
         Bukkit.getScheduler().runTask(plugin, runnable);

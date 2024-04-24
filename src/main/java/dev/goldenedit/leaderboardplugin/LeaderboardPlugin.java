@@ -65,8 +65,8 @@ public final class LeaderboardPlugin extends JavaPlugin {
             if (LeaderboardUtils.leaderboard.size() < 10)
                 LeaderboardUtils.leaderboard.add(new LeaderboardPlayer("Player", 0, "Null"));
         }
-        SchedulerUtils.runRepeating(LeaderboardUtils::sortLeaderboard, 1200L);
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, LeaderboardPlugin::saveData, 6000L, 6000L); // Runs async every 300 seconds, and only runs 300 seconds after startup
+        SchedulerUtils.runRepeating(LeaderboardUtils::sortLeaderboard, 1200L); // Sorts the in-game leaderboard every 60s
+        SchedulerUtils.runRepeatingAsync(LeaderboardPlugin::saveData, 6000L); // Saves and posts data async every 300 seconds
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             (new PlaceholderHook()).register();
     }
