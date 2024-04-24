@@ -37,6 +37,10 @@ public class PlaceholderHook extends PlaceholderExpansion {
             return ChatColor.translateAlternateColorCodes('&', "&f4. &x&3&0&6&E&F&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(3)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(3)).getPoints());
         if (params.equalsIgnoreCase("position5"))
             return ChatColor.translateAlternateColorCodes('&', "&f5. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(4)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(4)).getPoints());
+        if (params.equalsIgnoreCase("position1_player"))
+            return ChatColor.translateAlternateColorCodes('&', "&x&F&F&D&4&0&B" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getName()));
+        if (params.equalsIgnoreCase("position1_points"))
+            return ChatColor.translateAlternateColorCodes('&', "" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getPoints());
         if (params.equalsIgnoreCase("self")) {
             if (LeaderboardUtils.getPlace(player.getName()) != -1) {
                 String place = String.valueOf(LeaderboardUtils.getPlace(player.getName()));
