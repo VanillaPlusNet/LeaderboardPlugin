@@ -14,7 +14,6 @@ public class LeaderboardUtils {
     public static ArrayList<LeaderboardPlayer> leaderboard = new ArrayList<>();
 
     public static void sortLeaderboard() {
-        SchedulerUtils.runAsync(() -> {
             ArrayList<LeaderboardPlayer> temp = new ArrayList<>();
             for (int i = 0; i < 1000; i++) {
                 temp.add(new LeaderboardPlayer("Player", 0, "Null"));
@@ -29,7 +28,6 @@ public class LeaderboardUtils {
 
             temp.sort((p1, p2) -> Integer.compare(p2.getPoints(), p1.getPoints()));
             leaderboard = temp;
-        });
     }
 
     public static void showLeaderboard(CommandSender sender) {

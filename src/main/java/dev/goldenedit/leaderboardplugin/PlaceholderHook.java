@@ -28,11 +28,11 @@ public class PlaceholderHook extends PlaceholderExpansion {
     public String onRequest(OfflinePlayer player, String params) {
         // Can't use MiniMessage because PlaceholderAPI doesn't support it.
         if (params.equalsIgnoreCase("position1"))
-            return ChatColor.translateAlternateColorCodes('&', "&f1. &x&F&F&D&4&0&B" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getPoints());
+            return ChatColor.translateAlternateColorCodes('&', "&61. &x&F&F&D&4&0&B" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getPoints());
         if (params.equalsIgnoreCase("position2"))
-            return ChatColor.translateAlternateColorCodes('&', "&f2. &x&B&C&C&6&C&C" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(1)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(1)).getPoints());
+            return ChatColor.translateAlternateColorCodes('&', "&62. &x&B&C&C&6&C&C" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(1)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(1)).getPoints());
         if (params.equalsIgnoreCase("position3"))
-            return ChatColor.translateAlternateColorCodes('&', "&f3. &x&e&0&7&f&1&f" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(2)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(2)).getPoints());
+            return ChatColor.translateAlternateColorCodes('&', "&63. &x&e&0&7&f&1&f" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(2)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(2)).getPoints());
         if (params.equalsIgnoreCase("position4"))
             return ChatColor.translateAlternateColorCodes('&', "&f4. &x&3&0&6&E&F&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(3)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(3)).getPoints());
         if (params.equalsIgnoreCase("position5"))

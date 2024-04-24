@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import dev.goldenedit.leaderboardplugin.commands.CalcPoints;
 import dev.goldenedit.leaderboardplugin.commands.KillBoardCommand;
+import dev.goldenedit.leaderboardplugin.commands.LeaderboardResetCommand;
 import dev.goldenedit.leaderboardplugin.commands.PointsCommand;
 import dev.goldenedit.leaderboardplugin.listeners.DeathListener;
 import dev.goldenedit.leaderboardplugin.utils.LeaderboardUtils;
@@ -60,6 +61,7 @@ public final class LeaderboardPlugin extends JavaPlugin {
         getCommand("points").setExecutor((CommandExecutor)new PointsCommand());
         getCommand("killboard").setExecutor((CommandExecutor)new KillBoardCommand());
         getCommand("calcpoints").setExecutor((CommandExecutor)new CalcPoints());
+        getCommand("leaderboardreset").setExecutor((CommandExecutor)new LeaderboardResetCommand());
         SchedulerUtils.setPlugin((Plugin)this);
         for (int i = 0; i < 10; i++) {
             if (LeaderboardUtils.leaderboard.size() < 10)
@@ -75,7 +77,7 @@ public final class LeaderboardPlugin extends JavaPlugin {
         saveData();
     }
 
-    private static void saveData() {
+    public static void saveData() {
         ArrayList<LeaderboardPlayer> leaderboardSorted = new ArrayList<>();
         LeaderboardPlugin.killCount.forEach((uuid, points) -> {
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);

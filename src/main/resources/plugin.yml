@@ -18,3 +18,7 @@ commands:
     description: Calculates the points of a player
     usage: /calcpoints <player>
     permission: leaderboardplugin.calcpoints
+  leaderboardreset:
+    description: Reset the leaderboard and give top 3 players Legend rank for a few days
+    usage: /leaderboardreset
+    permission: leaderboardplugin.calcpoints
