@@ -10,8 +10,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import static dev.goldenedit.leaderboardplugin.LeaderboardPlugin.getPlugin;
-
 public class LeaderboardUtils {
     public static ArrayList<LeaderboardPlayer> leaderboard = new ArrayList<>();
 
