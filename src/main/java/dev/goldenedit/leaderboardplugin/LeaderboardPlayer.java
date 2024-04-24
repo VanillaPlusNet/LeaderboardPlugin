@@ -1,15 +1,13 @@
 package dev.goldenedit.leaderboardplugin;
 
-import java.util.UUID;
-
 public class LeaderboardPlayer {
     private String name;
 
     private int points;
 
-    private UUID uuid;
+    private String uuid;
 
-    public LeaderboardPlayer(String name, int points) {
+    public LeaderboardPlayer(String name, int points, String uuid) {
         this.name = name;
         this.points = points;
         this.uuid = uuid;
@@ -23,7 +21,7 @@ public class LeaderboardPlayer {
         return this.points;
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return this.uuid;
     }
 }

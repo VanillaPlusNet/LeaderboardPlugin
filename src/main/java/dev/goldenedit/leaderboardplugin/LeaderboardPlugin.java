@@ -63,7 +63,7 @@ public final class LeaderboardPlugin extends JavaPlugin {
         SchedulerUtils.setPlugin((Plugin)this);
         for (int i = 0; i < 10; i++) {
             if (LeaderboardUtils.leaderboard.size() < 10)
-                LeaderboardUtils.leaderboard.add(new LeaderboardPlayer("Player", 0));
+                LeaderboardUtils.leaderboard.add(new LeaderboardPlayer("Player", 0, "Null"));
         }
         SchedulerUtils.runRepeating(LeaderboardUtils::sortLeaderboard, 1200L);
         Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, LeaderboardPlugin::saveData, 6000L);
@@ -80,16 +80,18 @@ public final class LeaderboardPlugin extends JavaPlugin {
         LeaderboardPlugin.killCount.forEach((uuid, points) -> {
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
             if (offlinePlayer.hasPlayedBefore()) {
-                leaderboardSorted.add(new LeaderboardPlayer(offlinePlayer.getName(), points));
+                leaderboardSorted.add(new LeaderboardPlayer(offlinePlayer.getName(), points, uuid.toString()));
             }
         });
 
         leaderboardSorted.sort((p1, p2) -> Integer.compare(p2.getPoints(), p1.getPoints()));
 
         JsonObject jsonObject = new JsonObject();
-        for (LeaderboardPlayer player : LeaderboardUtils.leaderboard) {
-            jsonObject.addProperty(player.getName(), player.getPoints());
-        }
+        leaderboardSorted.forEach(player -> {
+            if (!player.getUuid().equals("Null")) {
+                jsonObject.addProperty(player.getUuid(), player.getPoints());
+            }
+        });
         try {
             if (!plugin.getDataFolder().exists())
                 plugin.getDataFolder().mkdirs();

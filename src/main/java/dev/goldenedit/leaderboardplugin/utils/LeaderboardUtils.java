@@ -19,13 +19,13 @@ public class LeaderboardUtils {
         SchedulerUtils.runAsync(() -> {
             ArrayList<LeaderboardPlayer> temp = new ArrayList<>();
             for (int i = 0; i < 1000; i++) {
-                temp.add(new LeaderboardPlayer("Player", 0));
+                temp.add(new LeaderboardPlayer("Player", 0, "Null"));
             }
 
             LeaderboardPlugin.killCount.forEach((uuid, points) -> {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
                 if (offlinePlayer.hasPlayedBefore()) {
-                    temp.add(new LeaderboardPlayer(offlinePlayer.getName(), points));
+                    temp.add(new LeaderboardPlayer(offlinePlayer.getName(), points, offlinePlayer.getUniqueId().toString()));
                 }
             });
 
