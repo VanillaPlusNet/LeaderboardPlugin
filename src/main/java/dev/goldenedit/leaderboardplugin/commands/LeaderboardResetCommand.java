@@ -13,11 +13,12 @@ import org.bukkit.command.CommandSender;
 
 public class LeaderboardResetCommand implements CommandExecutor{
     // Get top 3 players
-    LeaderboardPlayer position1 = LeaderboardUtils.leaderboard.get(0);
-    LeaderboardPlayer position2 = LeaderboardUtils.leaderboard.get(0);
-    LeaderboardPlayer position3 = LeaderboardUtils.leaderboard.get(0);
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        LeaderboardPlayer position1 = LeaderboardUtils.leaderboard.get(0);
+        LeaderboardPlayer position2 = LeaderboardUtils.leaderboard.get(1);
+        LeaderboardPlayer position3 = LeaderboardUtils.leaderboard.get(2);
 
         // Give top 3 players Legend rank for 5 days
 

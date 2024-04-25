@@ -35,7 +35,6 @@ public final class LeaderboardPlugin extends JavaPlugin {
     public static HashMap<UUID, ArrayList<PlayerKill>> playerPoints = new HashMap<>();
 
     public static HashMap<UUID, Integer> killCount = new HashMap<>();
-
     private static FileWriter fileWriter;
 
     private static File file = new File("plugins/LeaderboardPlugin/data.json");
