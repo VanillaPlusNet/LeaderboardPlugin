@@ -24,6 +24,8 @@ Requires [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245
 
 `/calcpoints <player>` `leaderboardplugin.calcpoints` - Calculate the number of points a player is worth.
 
+`/leaderboardreset` `leaderboardplugin.reset` - Reset the leaderboard, and give the top 3 players Legend Rank.
+
 
 ## Placeholders
 
@@ -40,7 +42,7 @@ Requires [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245
 `%leaderboardplugin_self%` - Your current points.
 
 
-## Resetting the Database
+## Resetting the Database fully
 
 1. Shut down the server.
 2. Delete the `data.json` file in the `/LeaderboardPlugin` folder.
