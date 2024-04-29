@@ -45,7 +45,7 @@ public class LeaderboardUtils {
     public static int getPlace(String name) {
         for (int i = 0; i < leaderboard.size(); i++) {
             if (leaderboard.get(i).getName().equals(name))
-                return i;
+                return i+1;
         }
         return -1;
     }
