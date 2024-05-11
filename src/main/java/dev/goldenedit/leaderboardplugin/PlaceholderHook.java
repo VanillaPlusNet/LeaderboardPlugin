@@ -37,6 +37,16 @@ public class PlaceholderHook extends PlaceholderExpansion {
             return ChatColor.translateAlternateColorCodes('&', "&f4. &x&3&0&6&E&F&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(3)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(3)).getPoints());
         if (params.equalsIgnoreCase("position5"))
             return ChatColor.translateAlternateColorCodes('&', "&f5. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(4)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(4)).getPoints());
+        if (params.equalsIgnoreCase("position6"))
+            return ChatColor.translateAlternateColorCodes('&', "&f6. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(5)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(5)).getPoints());
+        if (params.equalsIgnoreCase("position7"))
+            return ChatColor.translateAlternateColorCodes('&', "&f7. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(6)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(6)).getPoints());
+        if (params.equalsIgnoreCase("position8"))
+            return ChatColor.translateAlternateColorCodes('&', "&f8. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(7)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(7)).getPoints());
+        if (params.equalsIgnoreCase("position9"))
+            return ChatColor.translateAlternateColorCodes('&', "&f9. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(8)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(8)).getPoints());
+        if (params.equalsIgnoreCase("position10"))
+            return ChatColor.translateAlternateColorCodes('&', "&f10. &x&E&D&0&A&3&F" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(9)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(9)).getPoints());
         if (params.equalsIgnoreCase("position1_player"))
             return ChatColor.translateAlternateColorCodes('&', "&x&F&F&D&4&0&B" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getName()));
         if (params.equalsIgnoreCase("position1_points"))
