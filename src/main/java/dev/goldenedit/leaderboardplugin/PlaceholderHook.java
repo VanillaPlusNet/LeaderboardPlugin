@@ -27,6 +27,14 @@ public class PlaceholderHook extends PlaceholderExpansion {
 
     public String onRequest(OfflinePlayer player, String params) {
         // Can't use MiniMessage because PlaceholderAPI doesn't support it.
+        if (params.equalsIgnoreCase("points")) {
+            Integer points = LeaderboardUtils.getPoints(player.getUniqueId());
+            if (points != null) {
+                return ChatColor.translateAlternateColorCodes('&', "" + points);
+            } else {
+                return ChatColor.translateAlternateColorCodes('&', "&cData not available");
+            }
+        }
         if (params.equalsIgnoreCase("position1"))
             return ChatColor.translateAlternateColorCodes('&', "&61. &x&F&F&D&4&0&B" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getName()) + " &7- &f" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getPoints());
         if (params.equalsIgnoreCase("position2"))
@@ -50,7 +58,7 @@ public class PlaceholderHook extends PlaceholderExpansion {
         if (params.equalsIgnoreCase("position1_player"))
             return ChatColor.translateAlternateColorCodes('&', "&x&F&F&D&4&0&B" + equalizeLength(((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getName()));
         if (params.equalsIgnoreCase("position1_points"))
-            return ChatColor.translateAlternateColorCodes('&', "" + ((LeaderboardPlayer)LeaderboardUtils.leaderboard.get(0)).getPoints());
+            return ChatColor.translateAlternateColorCodes('&', "" + LeaderboardUtils.getPoints(player.getName()));
         if (params.equalsIgnoreCase("self")) {
             if (LeaderboardUtils.getPlace(player.getName()) != -1) {
                 String place = String.valueOf(LeaderboardUtils.getPlace(player.getName()));
